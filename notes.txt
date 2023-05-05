@@ -1,0 +1,35 @@
+Website - FlashNewsBuzz.com
+
+Python Scheduler - APScheduler 
+
+API - NewsApI, Bing New Search API
+
+Database - PostgreSQL
+
+Backend - Flask
+
+FrontEnd - javascript, libraries like axios or fetchAPI to make 
+requests to backend 
+
+Steps: 
+1. Collect news Articles related to tech and finance using NewsApi
+
+2. Summarize the articles using spaCy library
+
+3. Store the summarized articles and their metadata, using PostgreSQL 
+
+4. Web api to serve the summarized articles, using Flask
+
+5. Connect the frotend to the backend using javascript with libraries like Axios or FetchApi
+
+Collect news articles:
+Use web scraping libraries like BeautifulSoup and requests or news APIs like NewsAPI or GNewsAPI to gather news articles related to tech and finance.
+
+Summarize the articles:
+Utilize NLP libraries like spaCy, Gensim, or Hugging Face Transformers to create abridged versions of the news articles.
+
+Store the summarized articles and their metadata:
+Create a database using SQLite or a more advanced solution like PostgreSQL to store the summarized articles, their original sources, and other metadata (e.g., publication date, author).
+
+Create a backend using Flask or Django:
+Build a web API to serve the summarized articles to the frontend. Flask or Django can help you create a RESTful API that interacts with your database and serves the content to your frontend.
