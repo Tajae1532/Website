@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>My Website</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='finance.css') }}">
+    <link rel="stylesheet" type="text/css" href="finance.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function() {
@@ -18,8 +18,8 @@
     <div class="rectangle1">
       <ul>
         <li><a href="C:\Users\Godcr\Website\home.html">HOME</a></li>
-        <li><a href="financials/financials.html">FINANCE</a></li>
-        <li><a href="tech.html">TECH</a></li>
+        <li><a href="C:\Users\Godcr\Website\financials\finance.html">FINANCE</a></li>
+        <li><a href="C:\Users\Godcr\Website\tech\tech.html">TECH</a></li>
         <li><a href="about/about.html">ABOUT</a></li>
         <li><a href="account/account.html">ACCOUNT</a></li>
       </ul>
@@ -34,19 +34,18 @@
         <!-- Add more articles as needed -->
       </div>
       <div class="data-container">
-        <div id="article-1">
+        <div id="article-1" style="display:none;">
           <p>In recent tech news, Apple announced the launch of its new iPhone 14, which boasts an all-new design and improved camera features. The company also revealed the latest version of its operating system, iOS 16, which promises to enhance user privacy and security. Meanwhile, Google introduced a new feature in its Google Maps app that uses augmented reality (AR) to help users navigate indoor spaces such as airports and malls. In other news, Amazon's CEO Jeff Bezos announced that he will be stepping down from his role, with Andy Jassy taking over as the new CEO of the e-commerce giant.</p>
         </div>
-        <div id="article-2">
+        <div id="article-2" style="display:none;">
           <p>test2</p>
         </div>
-        <div id="article-3">
+        <div id="article-3" style="display:none;">
           <!-- Add text for Article 3 here -->
         </div>
-        <div id="article-4">
+        <div id="article-4" style="display:none;">
           <!-- Add text for Article 4 here -->
         </div>
-      </div>
     </div>
     <div class="bottom-bar"></div>
   </body>
