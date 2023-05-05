@@ -2,7 +2,7 @@ import requests
 from newsapi import NewsApiClient
 import spacy
 import psycopg2
-from flask import Flask, jsonify, redirect
+from flask import Flask, jsonify, redirect, render_template
 import schedule
 import time
 import threading
@@ -53,6 +53,10 @@ def store_summarized_articles():
     cursor.close()
     conn.close()
 
+
+@app.route('/finance')
+def finance():
+    return render_template('finance.html')
 
 @app.route('/', methods=['GET'])
 def index():
