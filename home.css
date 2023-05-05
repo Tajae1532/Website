@@ -1,0 +1,245 @@
+/* Home */
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #efe9e9;
+  margin: 0;
+  overflow: hidden;
+}
+/* Bottom bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 101px;
+  background: rgba(16, 0, 125, 0.35);
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Rectangle 1 */
+.rectangle1 {
+  position: absolute;
+  width: 80%;
+  height: 5vh;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  background: #4AEF8C;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 45px;
+}
+
+/* Headers */
+.rectangle1 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.rectangle1 a {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5vw;
+  line-height: 2vw;
+  color: #000000;
+  text-decoration: none;
+}
+
+.rectangle1 a::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background-color: #fff;
+  margin-top: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.rectangle1 a:hover::after {
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  position: absolute;
+  width: 4.12vw;
+  height: 7.35vh;
+  left: 3.5vw;
+  top: 6.5vh;
+  background: url(images/logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Text */
+.text {
+  position: absolute;
+  width: 35%;
+  height: 28%;
+  left: 50%;
+  top: 45%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 4vw;
+  line-height: 5vw;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+/* CTA Button */
+.cta-button {
+  position: absolute;
+  width: 20%;
+  height: 10vh;
+  left: 50%;
+  top: 75%;
+  transform: translateX(-50%);
+  background: #0085FF;
+  border-radius: 35px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2vw;
+  line-height: 3vw;
+  text-align: center;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CTA Button Hover */
+.cta-button:hover {
+  background-color: #4AEF8C;
+}
+
+@media (max-width: 768px) {
+  .rectangle1 a {
+    font-size: 3vw;
+    line-height: 4vw;
+  }
+
+  .text {
+    font-size: 6vw;
+    line-height: 7vw;
+  }
+
+  .cta-button {
+    font-size: 4vw;
+    line-height: 5vw;
+  }
+}
+
+/* Rectangle 2 */
+.rectangle2 {
+  position: absolute;
+  width: 374px;
+  height: 108px;
+  left: calc(50% - 374px/2 + 256px);
+  top: calc(50% - 108px/2 - 208px);
+  background: url(homeBanner.jpg);
+  mix-blend-mode: color;
+  border-radius: 45px;
+  }
+  
+  /* Unlock Your Financial Mind */
+.unlock-mind {
+  position: absolute;
+  width: 315px;
+  height: 113px;
+  left: calc(50% - 315px/2 - -200px);
+  top: calc(50% - 113px/2 - -200px);
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #4AEF8C;
+}
+  
+/* Button Link */
+.button-link {
+  position: absolute;
+  left: calc(50% - 275px);
+  top: calc(50% - -250px);
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  padding: 0;
+  margin: 0;
+}
+
+/* Jump In Container */
+.jump-in-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Jump In */
+.jump-in {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 150px;
+  text-align: center;
+  color: #000000;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Ellipse 1 */
+.ellipse1 {
+  width: 100%;
+  height: 100%;
+  background: #4AEF8C;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.ellipse1:before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: rgba(135, 224, 169, 0.639);
+}
+
+.button-link:hover .ellipse1 {
+  transform: scale(1.2);
+}
+
+.button-link:hover .jump-in {
+  color: #fff;
+}
