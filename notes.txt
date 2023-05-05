@@ -18,7 +18,7 @@ Steps:
 
 3. Store the summarized articles and their metadata, using PostgreSQL 
 
-4. Web api to serve the summarized articles, Flask
+4. Web api to serve the summarized articles, using Flask
 
 5. Connect the frotend to the backend using javascript with libraries like Axios or FetchApi
 
