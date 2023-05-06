@@ -7,6 +7,8 @@ import schedule
 import time
 import threading
 from transformers import pipeline
+from fuzzywuzzy import fuzz
+
 
 app = Flask(__name__)
 
@@ -14,14 +16,39 @@ app = Flask(__name__)
 newsapi = NewsApiClient(api_key='454e1b7729e94618826db2e78a9649ec')
 
 # Initialize summarizer from Hugging Face Transformers library
-summarizer = pipeline('summarization')
+summarizer = pipeline('summarization', model='sshleifer/distilbart-cnn-12-6', revision='a4f8f3e')
 
-def get_news_articles(query, language='en', page_size=4):
+def get_news_articles(query, language='en', page_size=10):
     response = newsapi.get_everything(q=query, language=language, page_size=page_size, sort_by='publishedAt')
-    return response['articles']
+    articles = response['articles']
 
-def summarize_article(text, max_length=50):
-    summary = summarizer(text, max_length=max_length, min_length=25, do_sample=False)
+    # Remove duplicates based on the title
+    unique_articles = []
+    titles = []
+    for article in articles:
+        title = article['title']
+        duplicate = False
+
+        for existing_title in titles:
+            similarity = fuzz.token_set_ratio(title, existing_title)
+
+            # If the similarity is above the threshold (e.g., 80), consider the title a duplicate
+            if similarity > 100:
+                duplicate = True
+                break
+
+        if not duplicate:
+            unique_articles.append(article)
+            titles.append(title)
+
+    return unique_articles
+
+def summarize_article(text, max_length=9500, min_length=8200):
+    input_length = len(text.split(' '))
+    adjusted_max_length = min(max_length, int(input_length * 3.5))
+    adjusted_min_length = min(min_length, adjusted_max_length)
+
+    summary = summarizer(text, max_length=adjusted_max_length, min_length=adjusted_min_length, do_sample=False)
     return summary[0]['summary_text']
 
 def store_summarized_articles():
@@ -30,13 +57,21 @@ def store_summarized_articles():
     cursor = conn.cursor()
 
     # Fetch articles
-    query = 'tech OR finance'
+    query = 'finance'
     articles = get_news_articles(query)
+
+    seen_titles = []
 
     # Summarize articles
     for article in articles:
-        summary = summarize_article(article['content'])
         title = article['title']
+
+        if title in seen_titles:
+            continue
+
+        seen_titles.append(title)
+
+        summary = summarize_article(article['content'])
         source = article['source']['name']
         url = article['url']
 

@@ -35,3 +35,9 @@ Create a backend using Flask or Django:
 Build a web API to serve the summarized articles to the frontend. Flask or Django can help you create a RESTful API that interacts with your database and serves the content to your frontend.
 
 SELECT * FROM summarized_articles;
+DELETE FROM summarized_articles;
+
+User - LTdev
+Password - LT2023!
+
+fintechpills.com
