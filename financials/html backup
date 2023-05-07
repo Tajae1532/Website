@@ -9,23 +9,8 @@
           var articleId = $(this).data('id');
           $('.data-container > div').hide();
           $('#article-' + articleId).show();
-  });
-});
-    </script>
-    <script>
-      $(document).ready(function() {
-  $('.article').hover(function() {
-    var articleId = $(this).data('id');
-    var containerWidth = $(this).width();
-    var textWidth = $(this).find('span').width();
-
-    if (textWidth > containerWidth) {
-      $(this).find('span').addClass('move-left');
-    }
-  }, function() {
-    $(this).find('span').removeClass('move-left');
-  });
-});
+        });
+      });
     </script>
   </head>
   <body>
@@ -40,21 +25,14 @@
       </ul>
       <div class="rectangle2"></div>
     </div>
-    <div class="article-container">
-      <div class="article" data-id="1">
-        <span>Ai Leader OpenAi releases GPT5.</span> 
+    <div class="main-container">
+      <div class="article-container">
+        <div class="article" data-id="1">Ai Leader OpenAi releases GPT5. Who will stop the tech giant now, this is insanity!</div>
+        <div class="article" data-id="2">Article 2</div>
+        <div class="article" data-id="3">Article 3</div>
+        <div class="article" data-id="4">Article 4</div>
+        <!-- Add more articles as needed -->
       </div>
-      <div class="article" data-id="2">
-        <span>Article 2</span>
-      </div>
-      <div class="article" data-id="3">
-        <span>Article 3</span>
-      </div>
-      <div class="article" data-id="4">
-        <span>Article 4</span>
-      </div>
-      <!-- Add more articles as needed -->
-    </div>
       <div class="data-container">
         <div id="article-1" style="display:none;">
           <p>In recent tech news, Apple announced the launch of its new iPhone 14, which boasts an all-new design and improved camera features. The company also revealed the latest version of its operating system, iOS 16, which promises to enhance user privacy and security. Meanwhile, Google introduced a new feature in its Google Maps app that uses augmented reality (AR) to help users navigate indoor spaces such as airports and malls. In other news, Amazon's CEO Jeff Bezos announced that he will be stepping down from his role, with Andy Jassy taking over as the new CEO of the e-commerce giant.</p>

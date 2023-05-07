@@ -169,7 +169,8 @@ justify-content: flex-start;
 }
   
 /* Article */
-.article {
+
+.article { 
 width: auto;
 min-width: 100;
 max-width: 350px; /* added max-width property */
@@ -203,7 +204,7 @@ background-color: #4AEF8C;
 }
 
 
-.article span {
+.article span {    
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
