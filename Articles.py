@@ -6,7 +6,13 @@ from flask import Flask, jsonify, redirect, render_template
 import schedule
 import time
 import threading
-from transformers import pipeline
+from transformers import pipeline, AutoConfig, TFAutoModelForSeq2SeqLM
+from fuzzywuzzy import fuzz, process
+
+model_name = "sshleifer/distilbart-cnn-12-6"
+   
+config = AutoConfig.from_pretrained(model_name)     
+model = TFAutoModelForSeq2SeqLM.from_pretrained(model_name, config=config, from_pt=True)
 
 app = Flask(__name__)
 
@@ -14,29 +20,62 @@ app = Flask(__name__)
 newsapi = NewsApiClient(api_key='454e1b7729e94618826db2e78a9649ec')
 
 # Initialize summarizer from Hugging Face Transformers library
-summarizer = pipeline('summarization')
+summarizer = pipeline('summarization', model='sshleifer/distilbart-cnn-12-6', revision='a4f8f3e')
 
-def get_news_articles(query, language='en', page_size=4):
+def get_news_articles(query, language='en', page_size=8):
     response = newsapi.get_everything(q=query, language=language, page_size=page_size, sort_by='publishedAt')
-    return response['articles']
+    articles = response['articles']
 
-def summarize_article(text, max_length=50):
-    summary = summarizer(text, max_length=max_length, min_length=25, do_sample=False)
+    # Remove duplicates based on the title
+    unique_articles = []
+    titles = []
+    for article in articles:
+        title = article['title']
+        duplicate = False
+
+        for existing_title in titles:
+            similarity = fuzz.token_set_ratio(title, existing_title)
+
+            # If the similarity is above the threshold (e.g., 80), consider the title a duplicate
+            if similarity > 100:
+                duplicate = True
+                break
+
+        if not duplicate:
+            unique_articles.append(article)
+            titles.append(title)
+
+    return unique_articles
+
+def summarize_article(text, max_length=9500, min_length=8200):
+    input_length = len(text.split(' '))
+    adjusted_max_length = min(max_length, int(input_length * 3.5))
+    adjusted_min_length = min(min_length, adjusted_max_length)
+
+    summary = summarizer(text, max_length=adjusted_max_length, min_length=adjusted_min_length, do_sample=False)
     return summary[0]['summary_text']
 
 def store_summarized_articles():
     # Connect to the PostgreSQL database
-    conn = psycopg2.connect(database="Articles", user="postgres", password="tajae1532", host="::1", port="5432")
+    conn = psycopg2.connect(database="Articles", user="postgres", password="PostLui!", host="::1", port="5432")
     cursor = conn.cursor()
 
     # Fetch articles
-    query = 'tech OR finance'
+    query = 'finance'
     articles = get_news_articles(query)
+
+    seen_titles = []
 
     # Summarize articles
     for article in articles:
-        summary = summarize_article(article['content'])
         title = article['title']
+
+        if title in seen_titles:
+            continue
+
+        seen_titles.append(title)
+
+        summary = summarize_article(article['content'])
         source = article['source']['name']
         url = article['url']
 
@@ -52,7 +91,7 @@ def store_summarized_articles():
 @app.route('/finance', methods=['GET'])
 def get_summarized_articles():
     #Connect to the PostgreSQL database
-    conn = psycopg2.connect(database="Articles", user="postgres", password="tajae1532", host="::1", port="5432")
+    conn = psycopg2.connect(database="Articles", user="postgres", password="PostLui!", host="::1", port="5432")
     cursor = conn.cursor()
 
     #Execute the SELECT query
@@ -74,8 +113,8 @@ def get_summarized_articles():
     cursor.close()
     conn.close()
 
-    return render_template('finance.html', articles=summarized_articles)
-
+    #Render the template with the summarized articles
+    return render_template('finance.html', summarized_articles=summarized_articles)
 #def update_articles():
     #while True:
         #store_summarized_articles()

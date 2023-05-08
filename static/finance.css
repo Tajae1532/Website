@@ -3,7 +3,7 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: #efe9e9;
+  background: #ffffff;
   margin: 0;
   overflow: hidden;
 }
@@ -116,32 +116,32 @@ body {
   position: absolute;
   top: 150px;
   left: 10%;
-  width: 77.5%;
+  width: 80%;
   height: 60%;
-  background-color: #d7d7d7;
-  border-radius: 45px;
+  background-color: #ffffff;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  flex-wrap: wrap;
   justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
 }
-  
+
 /* Article */
-.article {
-  width: auto;
-  min-width: 100;
-  max-width: 350px; /* added max-width property */
-  height: 25px;
+.article-title {
+  width: 40%;
+  height: 50px;
   background-color: #fff;
   border-radius: 35px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   padding: 10px;
   margin-bottom: 20px;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: left;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   cursor: pointer;
   transition: background-color 0.3s ease;
   white-space: nowrap;
@@ -149,47 +149,47 @@ body {
   text-overflow: ellipsis;
 }
 
-.article:hover {
+.article-title:hover {
+  background-color: #4AEF8C;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: initial;
+}
+
+.article-title:hover span {
+  display: inline-block;
+  animation: marquee 8s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.article-title:hover span:before {
+  content: "";
+  display: inline-block;
+  width: 5%;
+}
+
+.article-title:hover span:after {
+  content: "";
+  display: inline-block;
+  width: 5%;
+}
+.selected-article {
   background-color: #4AEF8C;
 }
-
-@media (min-width: 768px) {
-  .article {
-    width: auto;
-    white-space: nowrap;
-    max-width: 350px;
-  }
-  
-  .article:hover span {
-    animation-name: slidein-left;
-    animation-duration: 4s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: normal;  
-    animation-fill-mode: none;
-  }
-  
-  @keyframes slidein-left {
-    0% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-  }
-}
-
 /* Data container */
 .data-container {
   position: absolute;
   top: 150px;
   right: 10%;
-  width: 45%;
+  width: 40%;
   height: 60%;
   background-color: #fff;
   border-radius: 45px;
@@ -200,21 +200,6 @@ body {
   overflow-y: scroll;
 }
 
-/* Data container */
-.data-container {
-  position: absolute;
-  top: 150px;
-  right: 10%;
-  width: 45%;
-  height: 60%;
-  background-color: #fff;
-  border-radius: 45px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow-y: scroll;
-}
 /* Scrollbar styling */
 .data-container::-webkit-scrollbar {
   width: 10px;
