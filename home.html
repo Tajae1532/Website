@@ -3,49 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide By Expert</title>
+    <title>Top Rated Products</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; font-src 'self';">
+    <!-- Secure Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Guide By Expert</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Electronics</a></li>
-                    <li><a href="#">Gadgets</a></li>
-                    <li><a href="#">Reviews</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <div class="logo">LOGO</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
     </header>
+
     <main>
-        <section class="hero">
-            <div class="container">
-                <h2>Discover the forefront of innovation with our Electronics reviews</h2>
-                <p>From cutting-edge gadgets to must-have devices, we unravel the tech world.</p>
-            </div>
-        </section>
-        <section class="reviews">
-            <div class="container">
-                <h3>Latest Reviews</h3>
-                <div class="review-item">
-                    <h4>Gadget X Review</h4>
-                    <p>This is a great gadget because...</p>
+        <div class="content">
+            <section class="top-section">
+                <div class="category-card">
+                    <img src="images/electronics.jpg" alt="Electronics">
+                    <h2>Electronics</h2>
                 </div>
-                <div class="review-item">
-                    <h4>Device Y Review</h4>
-                    <p>This device stands out due to...</p>
+                <div class="category-card">
+                    <h2>Home Goods</h2>
                 </div>
-            </div>
-        </section>
+                <div class="category-card">
+                    <h2>Health & Wellness</h2>
+                </div>
+            </section>
+            <section class="scrolling-banner">
+                <a href="#" class="banner-article" id="article1">
+                    <img src="https://via.placeholder.com/150" alt="Article Image">
+                    <h3>Random Article 1</h3>
+                </a>
+                <a href="#" class="banner-article" id="article2">
+                    <img src="https://via.placeholder.com/150" alt="Article Image">
+                    <h3>Random Article 2</h3>
+                </a>
+                <a href="#" class="banner-article" id="article3">
+                    <img src="https://via.placeholder.com/150" alt="Article Image">
+                    <h3>Random Article 3</h3>
+                </a>
+            </section>
+            <section class="additional-categories">
+                <div class="category-card">
+                    <h2>Gaming</h2>
+                </div>
+                <div class="category-card">
+                    <h2>Clothing</h2>
+                </div>
+                <div class="category-card">
+                    <h2>Gadgets</h2>
+                </div>
+            </section>
+        </div>
     </main>
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Guide By Expert. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 Top Rated Products. All rights reserved.</p>
     </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
