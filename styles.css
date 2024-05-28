@@ -22,39 +22,30 @@ header {
 
 nav ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 5px;
+    padding: 0px;
     display: flex;
 }
 
 nav ul li {
-    margin: 0 15px;
-    transition: transform 0.3s ease;
-    display: inline-block;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #000000;
+    font-size: 21px;
+    color: #fff;
     font-weight: bold;
-    transition: color 0.3s ease, transform 0.5s ease, box-shadow 0.5s ease;
-    display: inline-block;
-    width: 80px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 10%;
-    background-color: #ffffff;
+    transition: color 0.4s ease, transform 0.5s ease;
 }
 
-nav ul li:hover {
-    transform: translateY(-5px);
-}
-
-nav ul li a:hover {
+nav ul li:hover a {
     color: #ffffff;
-    background-color: #000000;
+    transform: translateY(-5px) scale(1.2); /* Enlarge and move text up slightly on hover */
 }
+
 
 main {
     padding: 40px 20px;
