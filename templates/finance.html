@@ -8,10 +8,31 @@
       $(document).ready(function() {
         $('.article-title').click(function() {
           var articleId = $(this).data('id');
+          $('.article-title').removeClass('selected-article');
+          $(this).addClass('selected-article');
           $('.article-details').hide();
           $('#article-' + articleId).show();
+          $('#article-content').text(articleContent[articleId]);
         });
       });
+      
+      function get_article_details(articleId) {
+        var articleUrl = $('#article-' + articleId).data('url');
+        $('#article-details-content').html('<p>Loading...</p>');
+    
+        $.ajax({
+          type: "POST",
+          url: "/get_article_details",
+          contentType: "application/json",
+          data: JSON.stringify({url: articleUrl}),
+          success: function(result) {
+            $('#article-details-content').html('<h2>' + result.title + '</h2><h3>' + result.source + '</h3><a href="' + result.url + '" target="_blank">Read the original article</a><p>' + result.summary + '</p>');
+          },
+          error: function() {
+            $('#article-details-content').html('<p>There was an error loading the article.</p>');
+          }
+        });
+      }
     </script>
   </head>
   <body>
@@ -28,12 +49,12 @@
     </div>
     <div class="main-container">
       <div class="article-container">
-        {% for article in articles %}
-        <div class="article-title" data-id="{{ article.id }}">{{ article.title }}</div>
+        {% for article in summarized_articles %}
+        <button class="article-title" data-id="{{ article.id }}" data-url="{{ article.url }}" onclick="get_article_details({{ article.id }})"><span>{{ article.title }}</span></button>
         {% endfor %}
       </div>
       <div class="data-container">
-        {% for article in articles %}
+        {% for article in summarized_articles %}
         <div id="article-{{ article.id }}" class="article-details" style="display: none;">
           <h2>{{ article.title }}</h2>
           <h3>{{ article.source }}</h3>

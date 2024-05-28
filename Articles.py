@@ -6,9 +6,13 @@ from flask import Flask, jsonify, redirect, render_template
 import schedule
 import time
 import threading
-from transformers import pipeline
-from fuzzywuzzy import fuzz
+from transformers import pipeline, AutoConfig, TFAutoModelForSeq2SeqLM
+from fuzzywuzzy import fuzz, process
 
+model_name = "sshleifer/distilbart-cnn-12-6"
+   
+config = AutoConfig.from_pretrained(model_name)     
+model = TFAutoModelForSeq2SeqLM.from_pretrained(model_name, config=config, from_pt=True)
 
 app = Flask(__name__)
 
@@ -18,7 +22,7 @@ newsapi = NewsApiClient(api_key='454e1b7729e94618826db2e78a9649ec')
 # Initialize summarizer from Hugging Face Transformers library
 summarizer = pipeline('summarization', model='sshleifer/distilbart-cnn-12-6', revision='a4f8f3e')
 
-def get_news_articles(query, language='en', page_size=10):
+def get_news_articles(query, language='en', page_size=8):
     response = newsapi.get_everything(q=query, language=language, page_size=page_size, sort_by='publishedAt')
     articles = response['articles']
 
@@ -53,7 +57,7 @@ def summarize_article(text, max_length=9500, min_length=8200):
 
 def store_summarized_articles():
     # Connect to the PostgreSQL database
-    conn = psycopg2.connect(database="Articles", user="postgres", password="tajae1532", host="::1", port="5432")
+    conn = psycopg2.connect(database="Articles", user="postgres", password="PostLui!", host="::1", port="5432")
     cursor = conn.cursor()
 
     # Fetch articles
@@ -87,7 +91,7 @@ def store_summarized_articles():
 @app.route('/finance', methods=['GET'])
 def get_summarized_articles():
     #Connect to the PostgreSQL database
-    conn = psycopg2.connect(database="Articles", user="postgres", password="tajae1532", host="::1", port="5432")
+    conn = psycopg2.connect(database="Articles", user="postgres", password="PostLui!", host="::1", port="5432")
     cursor = conn.cursor()
 
     #Execute the SELECT query
@@ -109,8 +113,8 @@ def get_summarized_articles():
     cursor.close()
     conn.close()
 
-    return render_template('finance.html', articles=summarized_articles)
-
+    #Render the template with the summarized articles
+    return render_template('finance.html', summarized_articles=summarized_articles)
 #def update_articles():
     #while True:
         #store_summarized_articles()
