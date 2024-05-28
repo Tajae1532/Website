@@ -2,14 +2,14 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #f0f0f000;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #4CAF50;
+    background-color: #000000;
     padding: 15px 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -29,17 +29,32 @@ nav ul {
 
 nav ul li {
     margin: 0 15px;
+    transition: transform 0.3s ease;
+    display: inline-block;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: #000000;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.5s ease, box-shadow 0.5s ease;
+    display: inline-block;
+    width: 80x;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 10%;
+    background-color: #ffffff;
+    
+}
+
+nav ul li:hover {
+    transform: translateY(-5px);
 }
 
 nav ul li a:hover {
-    color: #ffeb3b;
+    color: #ffffff;
+    background-color: #000000;
 }
 
 main {
@@ -54,45 +69,49 @@ main {
 }
 
 .category-card {
-    background-color: #fff;
-    padding: 30px;
+    background-color: #ebebeb97;
+    padding: 45px;
     margin: 20px;
+    width: auto;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     flex: 1;
     max-width: 250px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .category-card h2 {
     font-size: 1.5em;
-    color: #333;
+    color: #333333;
 }
 
 .category-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
 }
 
 .scrolling-banner {
     background-color: #fff;
-    padding: 40px;
+    padding: 10px;
     margin: 20px 0;
+    width: auto;
+    height: 250px;
+    max-height: 350px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-around;
 }
 
 .banner-article {
     flex: 1;
-    margin: 0 20px;
+    margin: 0 10px;
     text-align: center;
     text-decoration: none;
     color: inherit;
-    background-color: #e0e0e0;
-    padding: 20px;
+    background-color: #ebebeb97;
+    padding: 10px;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -108,7 +127,7 @@ main {
 }
 
 footer {
-    background-color: #4CAF50;
+    background-color: #000000;
     padding: 15px;
     text-align: center;
     color: #fff;
