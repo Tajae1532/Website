@@ -281,7 +281,7 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #4CAF50;
+    background-color: #020f02;
     color: white;
     border: none;
     border-radius: 5px;
@@ -289,7 +289,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #0c0c0c;
 }
 
 /* Back cell */

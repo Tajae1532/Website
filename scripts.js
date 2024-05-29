@@ -1,4 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Ensure elements exist before attaching event listeners
+    const suggestionForm = document.getElementById("suggestionForm");
+    const contactForm = document.getElementById("contactForm");
+    const article1 = document.getElementById("article1");
+    const article2 = document.getElementById("article2");
+    const article3 = document.getElementById("article3");
+
+    if (suggestionForm) {
+        suggestionForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const productName = document.getElementById("productName").value;
+            const productCategory = document.getElementById("productCategory").value;
+            const productLink = document.getElementById("productLink").value;
+
+            fetch('http://localhost:3000/submit-suggestion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    productName: productName,
+                    productCategory: productCategory,
+                    productLink: productLink
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Product Suggested:", data);
+                event.target.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            fetch('http://localhost:3000/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Message Sent:", data);
+                event.target.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    }
+
     const articles1 = [
         {
             title: "Top Journal Articles of 2023",
@@ -16,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
             url: "https://www.electronicproducts.com/electronic-products-announces-winners-of-the-2022-product-of-the-year-awards/"
         }
     ];
-    
+
     const articles2 = [
         {
             title: "Top 10 5G Chips and Modules",
@@ -34,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
             url: "https://www.electronicproducts.com/designers-guide-automotive-processors/"
         }
     ];
-    
+
     const articles3 = [
         {
             title: "APEC 2023: Advances in Power Devices",
@@ -53,31 +114,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     ];
 
-    const article1 = document.getElementById("article1");
-    const article2 = document.getElementById("article2");
-    const article3 = document.getElementById("article3");
+    if (article1 && article2 && article3) {
+        let index1 = 0;
+        let index2 = 0;
+        let index3 = 0;
 
-    let index1 = 0;
-    let index2 = 0;
-    let index3 = 0;
+        function rotateArticles() {
+            index1 = (index1 + 1) % articles1.length;
+            index2 = (index2 + 1) % articles2.length;
+            index3 = (index3 + 1) % articles3.length;
 
-    function rotateArticles() {
-        index1 = (index1 + 1) % articles1.length;
-        index2 = (index2 + 1) % articles2.length;
-        index3 = (index3 + 1) % articles3.length;
+            updateArticle(article1, articles1[index1]);
+            updateArticle(article2, articles2[index2]);
+            updateArticle(article3, articles3[index3]);
+        }
 
-        updateArticle(article1, articles1[index1]);
-        updateArticle(article2, articles2[index2]);
-        updateArticle(article3, articles3[index3]);
+        function updateArticle(element, article) {
+            element.querySelector("h3").textContent = article.title;
+            element.querySelector("img").src = article.img;
+            element.href = article.url;
+        }
+
+        setInterval(rotateArticles, 3000); // Rotate every 3 seconds
     }
-
-    function updateArticle(element, article) {
-        element.querySelector("h3").textContent = article.title;
-        element.querySelector("img").src = article.img;
-        element.href = article.url;
-    }
-
-    setInterval(rotateArticles, 3000); // Rotate every 3 seconds
 });
 
 document.addEventListener("DOMContentLoaded", function() {
