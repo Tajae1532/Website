@@ -112,13 +112,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const products = {
         101: [
-            { id: 1, name: 'iPhone 14', details: 'Latest iPhone with A16 Bionic chip.' },
-            { id: 2, name: 'Samsung Galaxy S22', details: 'Newest Galaxy with improved camera.' }
+            { id: 1, name: 'iPhone 14', details: 'Latest iPhone with A16 Bionic chip.', price: '$999', pros: ['Great camera', 'Fast performance'], cons: ['Expensive', 'No headphone jack'], image: 'images/iphone15.jpg', links: [{url: '#', text: 'Buy on Amazon'}, {url: '#', text: 'Buy on eBay'}] },
+            { id: 2, name: 'Samsung Galaxy S22', details: 'Newest Galaxy with improved camera.', price: '$899', pros: ['Excellent display', 'Versatile camera'], cons: ['High price', 'Average battery life'], image: 'galaxy.jpg', links: [{url: '#', text: 'Buy on Amazon'}, {url: '#', text: 'Buy on eBay'}] }
             // Add more products as needed
         ],
         102: [
-            { id: 3, name: 'MacBook Pro 2024', details: 'Powerful laptop with M2 chip.' },
-            { id: 4, name: 'Dell XPS 13', details: 'Compact and powerful laptop.' }
+            { id: 3, name: 'MacBook Pro 2024', details: 'Powerful laptop with M2 chip.', price: '$1999', pros: ['High performance', 'Great battery life'], cons: ['Very expensive', 'Limited ports'], image: 'macbook.jpg', links: [{url: '#', text: 'Buy on Amazon'}, {url: '#', text: 'Buy on eBay'}] },
+            { id: 4, name: 'Dell XPS 13', details: 'Compact and powerful laptop.', price: '$1299', pros: ['Compact design', 'Powerful specs'], cons: ['Expensive', 'No HDMI port'], image: 'xps.jpg', links: [{url: '#', text: 'Buy on Amazon'}, {url: '#', text: 'Buy on eBay'}] }
             // Add more products as needed
         ]
     };
@@ -206,8 +206,45 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to show product details in a modal
     function showProductDetails(product) {
         const modal = document.getElementById('product-modal');
-        const modalBody = document.getElementById('modal-body');
-        modalBody.innerHTML = `<h2>${product.name}</h2><p>${product.details}</p>`;
+        const modalTitle = document.getElementById('modal-title');
+        const modalImage = document.getElementById('modal-image');
+        const modalPrice = document.getElementById('modal-price');
+        const modalProsList = document.getElementById('modal-pros-list');
+        const modalConsList = document.getElementById('modal-cons-list');
+        const modalLinks = document.getElementById('modal-links');
+        
+        modalTitle.textContent = product.name;
+        modalImage.src = product.image;
+        modalImage.style.maxWidth = '200px';
+        modalImage.style.maxHeight = '200px';
+        modalPrice.textContent = product.price;
+
+        // Populate pros list
+        modalProsList.innerHTML = '';
+        product.pros.forEach(pro => {
+            const li = document.createElement('li');
+            li.textContent = pro;
+            modalProsList.appendChild(li);
+        });
+
+        // Populate cons list
+        modalConsList.innerHTML = '';
+        product.cons.forEach(con => {
+            const li = document.createElement('li');
+            li.textContent = con;
+            modalConsList.appendChild(li);
+        });
+
+        // Populate links
+        modalLinks.innerHTML = '';
+        product.links.forEach(link => {
+            const a = document.createElement('a');
+            a.href = link.url;
+            a.textContent = link.text;
+            a.className = 'modal-link-button';
+            modalLinks.appendChild(a);
+        });
+
         modal.style.display = 'block';
     }
 
@@ -216,9 +253,9 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('goBack called');
         console.log('state.previousView:', state.previousView);
         console.log('state.currentView:', state.currentView);
-        if (state.previousView === 'articles') {
+        if (state.currentView === 'article') {
             loadCategory(state.selectedCategory);
-        } else if (state.previousView === 'categories') {
+        } else if (state.currentView === 'articles') {
             renderCategories();
         }
     }
