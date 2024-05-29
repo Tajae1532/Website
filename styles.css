@@ -79,15 +79,14 @@ main {
 }
 
 .category-card {
-    background-color: transparent;
     width: 250px; /* Fixed width */
-    height: 250px; /* Fixed height */
+    height: 150px; /* Fixed height */
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, background-color 0.3s ease;
     position: relative;
     overflow: hidden;
 }
@@ -113,16 +112,17 @@ main {
 }
 
 .category-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.443);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .scrolling-banner {
     background-color: #fff;
     padding: 10px;
     margin: 20px 0;
-    width: auto;
-    height: 250px;
+    width: 1020px;
+    height: 200px;
     max-height: 350px;
     border-radius: 10px;
     display: flex;
@@ -144,12 +144,12 @@ main {
 .banner-article img {
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 10px;
 }
 
 .banner-article:hover {
-    transform: translateY(-10px);
+    transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -168,4 +168,73 @@ footer {
 footer p {
     margin: 0;
     font-size: 1em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #444;
+}
+
+@media (max-width: 1200px) {
+    .top-section, .additional-categories {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category-card {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    .scrolling-banner {
+        width: 90%;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .banner-article {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
 }

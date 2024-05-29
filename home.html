@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Rated Products</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; font-src 'self';">
-    <!-- Secure Headers -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Top rated products and articles on electronics, home goods, health & wellness, and more.">
+        <title>Worth The Pick - Top Rated Products</title>
+        <link rel="stylesheet" href="styles.css">
+        <!-- Content Security Policy -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' http://localhost:3000;">
+        <!-- Secure Headers -->
+        <meta http-equiv="X-Content-Type-Options" content="nosniff">
+        <meta http-equiv="X-Frame-Options" content="DENY">
+        <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    </head>
+    
 <body>
     <header>
         <div class="logo">Worth The Pick</div>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="categories.html">Categories</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+        <nav aria-label="Main navigation">
+            <ul role="menubar">
+                <li role="menuitem"><a href="home.html">Home</a></li>
+                <li role="menuitem"><a href="categories.html">Categories</a></li>
+                <li role="menuitem"><a href="about.html">About</a></li>
+                <li role="menuitem"><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -33,43 +35,60 @@
                     <h2>Electronics</h2>
                 </div>
                 <div class="category-card">
+                    <img src="images/home_goods.jpg" alt="Home Goods">
                     <h2>Home Goods</h2>
                 </div>
                 <div class="category-card">
+                    <img src="images/health_wellness.jpg" alt="Health & Wellness">
                     <h2>Health & Wellness</h2>
                 </div>
             </section>
             <section class="scrolling-banner">
                 <a href="#" class="banner-article" id="article1">
-                    <img src="https://via.placeholder.com/150" alt="Article Image">
+                    <img src="https://via.placeholder.com/150" alt="Article Image" loading="lazy">
                     <h3>Random Article 1</h3>
                 </a>
                 <a href="#" class="banner-article" id="article2">
-                    <img src="https://via.placeholder.com/150" alt="Article Image">
+                    <img src="https://via.placeholder.com/150" alt="Article Image" loading="lazy">
                     <h3>Random Article 2</h3>
                 </a>
                 <a href="#" class="banner-article" id="article3">
-                    <img src="https://via.placeholder.com/150" alt="Article Image">
+                    <img src="https://via.placeholder.com/150" alt="Article Image" loading="lazy">
                     <h3>Random Article 3</h3>
                 </a>
             </section>
             <section class="additional-categories">
                 <div class="category-card">
+                    <img src="images/gaming.jpg" alt="Gaming">
                     <h2>Gaming</h2>
                 </div>
                 <div class="category-card">
+                    <img src="images/clothing.jpg" alt="Clothing">
                     <h2>Clothing</h2>
                 </div>
                 <div class="category-card">
+                    <img src="images/gadgets.jpg" alt="Gadgets">
                     <h2>Gadgets</h2>
                 </div>
+            </section>
+            <section>
+                <h2>Suggest a Product</h2>
+                <form id="suggestionForm">
+                    <label for="productName">Product Name:</label>
+                    <input type="text" id="productName" name="productName" required>
+                    <label for="productCategory">Category:</label>
+                    <input type="text" id="productCategory" name="productCategory" required>
+                    <label for="productLink">Amazon Link:</label>
+                    <input type="url" id="productLink" name="productLink" required>
+                    <button type="submit">Submit</button>
+                </form>
             </section>
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 Top Rated Products. All rights reserved.</p>
+        <p>&copy; 2024 Worth The Pick. All rights reserved.</p>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script src="scripts.js" defer></script>
 </body>
 </html>

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const articles2 = [
         {
             title: "Top 10 5G Chips and Modules",
-            img: "https://www.electronicproducts.com/wp-content/uploads/2022/10/5G.jpg",
+            img: "https://www.electronicproducts.com/wp-content/uploads/AMD-Zynq-RFSoC-1.png",
             url: "https://www.electronicproducts.com/top-10-5g-chips-and-modules/"
         },
         {
@@ -78,4 +78,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     setInterval(rotateArticles, 3000); // Rotate every 3 seconds
+
+    // Handle form submission
+    document.getElementById("suggestionForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const productName = document.getElementById("productName").value;
+        const productCategory = document.getElementById("productCategory").value;
+        const productLink = document.getElementById("productLink").value;
+    
+        // Send data to the backend server
+        fetch('http://localhost:3000/submit-suggestion', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            productName: productName,
+            productCategory: productCategory,
+            productLink: productLink
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log("Product Suggested:", data);
+          // Reset form fields
+          event.target.reset();
+        })
+        .catch(error => console.error('Error:', error));
+    });
 });
