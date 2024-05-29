@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
         previousView: null // To keep track of the previous view
     };
 
-    // Example categories and articles
+    // Example categories, articles, and products
     const categories = [
         { id: 1, name: 'Electronics' },
         { id: 2, name: 'Home Goods' },
@@ -115,6 +115,19 @@ document.addEventListener("DOMContentLoaded", function() {
         2: [
             { id: 201, title: 'Top Kitchen Appliances' },
             { id: 202, title: 'Best Furniture for Your Home' }
+        ]
+    };
+
+    const products = {
+        101: [
+            { id: 1, name: 'iPhone 14', details: 'Latest iPhone with A16 Bionic chip.' },
+            { id: 2, name: 'Samsung Galaxy S22', details: 'Newest Galaxy with improved camera.' }
+            // Add more products as needed
+        ],
+        102: [
+            { id: 3, name: 'MacBook Pro 2024', details: 'Powerful laptop with M2 chip.' },
+            { id: 4, name: 'Dell XPS 13', details: 'Compact and powerful laptop.' }
+            // Add more products as needed
         ]
     };
 
@@ -171,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Function to render article details (placeholder)
+    // Function to render article details with products
     function loadArticle(articleId) {
         state.previousView = 'articles'; // Track previous view
         state.currentView = 'article';
@@ -189,9 +202,21 @@ document.addEventListener("DOMContentLoaded", function() {
             cells[i].onclick = null;
         }
 
-        if (cells.length > 0) {
-            cells[0].textContent = `Content for article ${articleId}`;
-        }
+        const articleProducts = products[articleId] || [];
+        articleProducts.forEach((product, index) => {
+            if (index < cells.length) {
+                cells[index].textContent = product.name;
+                cells[index].onclick = () => showProductDetails(product);
+            }
+        });
+    }
+
+    // Function to show product details in a modal
+    function showProductDetails(product) {
+        const modal = document.getElementById('product-modal');
+        const modalBody = document.getElementById('modal-body');
+        modalBody.innerHTML = `<h2>${product.name}</h2><p>${product.details}</p>`;
+        modal.style.display = 'block';
     }
 
     // Function to go back in history
@@ -209,6 +234,20 @@ document.addEventListener("DOMContentLoaded", function() {
     // Attach event listener for the back button
     const backButton = document.getElementById('back-button');
     backButton.addEventListener('click', goBack);
+
+    // Attach event listener to close the modal
+    const closeModalButton = document.getElementById('close-modal');
+    closeModalButton.addEventListener('click', function() {
+        document.getElementById('product-modal').style.display = 'none';
+    });
+
+    // Close the modal when clicking outside of the modal content
+    window.addEventListener('click', function(event) {
+        const modal = document.getElementById('product-modal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 
     // Initialize with categories
     renderCategories();
