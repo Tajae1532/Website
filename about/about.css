@@ -1,55 +1,119 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
+    background-color: #f0f0f0;
 }
 
 header {
-    background: #333;
-    color: #fff;
-    padding: 1em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-    margin: 0;
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fff;
 }
 
 nav ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: space-around;
+}
+
+nav ul li {
+    margin: 0 15px;
+    transition: transform 0.3s ease;
+    display: inline-block;
 }
 
 nav ul li a {
-    color: #fff;
     text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.5s ease, box-shadow 0.5s ease;
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 10%;
+    background-color: #ffffff;
 }
 
-.hero {
-    background: #f4f4f4;
-    padding: 2em 0;
+nav ul li:hover {
+    transform: translateY(-5px);
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+main {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.reviews {
-    padding: 2em 0;
+.about-section h1, .about-section h2 {
+    margin: 20px 0;
 }
 
-.review-item {
-    margin-bottom: 1em;
+.about-section p {
+    margin: 20px 0;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.team-member {
+    display: inline-block;
+    width: 250px;
+    margin: 20px;
+    text-align: center;
+}
+
+.team-member h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1.3em;
+}
+
+.team-member p {
+    margin: 0;
+    font-size: 1em;
+    color: #555;
 }
 
 footer {
-    background: #333;
-    color: #fff;
+    background-color: #000000;
+    padding: 15px;
     text-align: center;
-    padding: 1em 0;
+    color: #fff;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
 }
