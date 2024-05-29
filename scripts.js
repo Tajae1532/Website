@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const articles2 = [
         {
             title: "Top 10 5G Chips and Modules",
-            img: "https://www.electronicproducts.com/wp-content/uploads/2022/10/5G.jpg",
+            img: "https://www.electronicproducts.com/wp-content/uploads/AMD-Zynq-RFSoC-1.png",
             url: "https://www.electronicproducts.com/top-10-5g-chips-and-modules/"
         },
         {
@@ -79,14 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(rotateArticles, 3000); // Rotate every 3 seconds
 });
-
-
-
-
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", function() {
     // Tracker to keep track of user's position
