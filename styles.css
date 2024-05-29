@@ -7,15 +7,22 @@ body {
 
 header {
     position: fixed;
-    width: 100%;
-    top: 0;
+    width: 70%;
+    height: 40px;
+    top: 0px;
+    left: 0;
+    right: 0;
+    margin: auto; /* Center the header */
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: bottom;
     background-color: #000000;
     padding: 15px 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
 }
 
 .logo {
@@ -26,15 +33,15 @@ header {
 
 nav ul {
     list-style: none;
-    margin: 5px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     display: flex;
 }
 
 nav ul li {
     margin: 0 20px;
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* Align items to the bottom */
 }
 
 nav ul li a {
@@ -42,12 +49,25 @@ nav ul li a {
     font-size: 21px;
     color: #fff;
     font-weight: bold;
-    transition: color 0.4s ease, transform 0.5s ease;
+    background-color: #000; /* Black background */
+    line-height: 1; /* Ensure line height is normal */
+    display: flex;
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    height: 55px; /* Set a fixed height */
+    padding: 0 20px; /* Add padding for horizontal space */
+    transition: color 0.4s ease, background-color 0.4s ease, transform 0.5s ease, clip-path 0.5s ease;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 nav ul li:hover a {
-    color: #ffffff;
+    color: #000; /* Change text color to black on hover */
+    background-color: #fff; /* Change background color to white on hover */
     transform: translateY(-5px) scale(1.2); /* Enlarge and move text up slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.781);
+    clip-path: polygon(0 0, 105% 0, 105% 100%, 0% 100%);
 }
 
 
@@ -77,7 +97,7 @@ main {
     width: 250px; /* Fixed width */
     height: 150px; /* Fixed height */
     top: 10%;
-    padding: 20px;
+    padding: 40px;
     margin: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -181,6 +201,7 @@ footer p {
     justify-content: center;
     margin-bottom: 20px;
     margin-left: 80px;
+    margin-top: 50px;
 }
 
 .dynamic-heading-cell {
@@ -236,10 +257,10 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #4CAF50;
+    background-color: #000000;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background-color 0.3s ease;
 }
 
@@ -276,21 +297,6 @@ button:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.779);
 }
 
-button {
-    margin: 20px 0;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-}
 
 /* Back cell */
 

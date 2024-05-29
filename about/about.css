@@ -7,15 +7,21 @@ body {
 
 header {
     position: fixed;
-    width: 100%;
-    top: 0;
+    width: 70%;
+    top: 0px;
+    left: 0;
+    right: 0;
+    margin: auto; /* Center the header */
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: bottom;
     background-color: #000000;
     padding: 15px 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
 }
 
 .logo {
