@@ -1,0 +1,62 @@
+header {
+    position: fixed;
+    width: 70%;
+    height: 40px;
+    top: 0px;
+    left: 0;
+    right: 0;
+    margin: auto; /* Center the header */
+    display: flex;
+    justify-content: space-between;
+    align-items: bottom;
+    background-color: #000000;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 20px;
+    display: flex;
+    align-items: flex-end; /* Align items to the bottom */
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 21px;
+    color: #fff;
+    font-weight: bold;
+    background-color: #000; /* Black background */
+    line-height: 1; /* Ensure line height is normal */
+    display: flex;
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    height: 55px; /* Set a fixed height */
+    padding: 0 20px; /* Add padding for horizontal space */
+    transition: color 0.4s ease, background-color 0.4s ease, transform 0.5s ease, clip-path 0.5s ease;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+nav ul li:hover a {
+    color: #000; /* Change text color to black on hover */
+    background-color: #fff; /* Change background color to white on hover */
+    transform: translateY(-5px) scale(1.2); /* Enlarge and move text up slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.781);
+}

@@ -175,21 +175,39 @@ const products = {
             id: 1,
             name: 'iPhone 14',
             details: 'Latest iPhone with A16 Bionic chip.',
-            price: '$999',
-            pros: ['Great camera', 'Fast performance'],
-            cons: ['Expensive', 'No headphone jack'],
-            images: ['images/iphone15.jpg', 'images/electronics.jpg', 'iphone3.jpg'], // Multiple images
-            links: [{url: '#', text: 'Buy on Amazon'}, {url: '#', text: 'Buy on eBay'}]
+            pros: [
+                { title: 'Great camera', details: '12MP dual-lens camera with Night mode' },
+                { title: 'Fast performance', details: 'A16 Bionic chip for faster processing' }
+            ],
+            cons: [
+                { title: 'Expensive', details: 'Starting at $999, it is one of the priciest smartphones' },
+                { title: 'No headphone jack', details: 'Requires wireless headphones or a dongle' }
+            ],
+            images: ['../images/iphone15.jpg', '../images/electronics.jpg', 'iphone3.jpg'], // Multiple images
+            rating: 4.5, // Overall rating
+            links: [
+                { url: '#', text: 'Buy on Amazon', originalPrice: '$999.99', salePrice: '$899.99' },
+                { url: '#', text: 'Buy on eBay', originalPrice: '$999.99' }
+            ]
         },
         {
             id: 2,
             name: 'Samsung Galaxy S22',
             details: 'Newest Galaxy with improved camera.',
-            price: '$899',
-            pros: ['Excellent display', 'Versatile camera'],
-            cons: ['High price', 'Average battery life'],
+            pros: [
+                { title: 'Excellent display', details: '6.1-inch Dynamic AMOLED with HDR10+' },
+                { title: 'Versatile camera', details: 'Triple-lens setup with ultra-wide and telephoto' }
+            ],
+            cons: [
+                { title: 'High price', details: 'Starting at $899' },
+                { title: 'Average battery life', details: 'Up to 10 hours of usage' }
+            ],
             images: ['galaxy1.jpg', 'galaxy2.jpg'], // Multiple images
-            links: [{url: '#', text: 'Buy on Amazon'}, {url: '#', text: 'Buy on eBay'}]
+            rating: 4.0, // Overall rating
+            links: [
+                { url: '#', text: 'Buy on Amazon', originalPrice: '$899.99', salePrice: '$799.99' },
+                { url: '#', text: 'Buy on eBay', originalPrice: '$899.99' }
+            ]
         }
         // Add more products as needed
     ],
@@ -198,25 +216,44 @@ const products = {
             id: 3,
             name: 'MacBook Pro 2024',
             details: 'Powerful laptop with M2 chip.',
-            price: '$1999',
-            pros: ['High performance', 'Great battery life'],
-            cons: ['Very expensive', 'Limited ports'],
+            pros: [
+                { title: 'High performance', details: 'Powered by the M2 chip' },
+                { title: 'Great battery life', details: 'Up to 20 hours on a single charge' }
+            ],
+            cons: [
+                { title: 'Very expensive', details: 'Starting at $1999' },
+                { title: 'Limited ports', details: 'Only USB-C ports available' }
+            ],
             images: ['macbook1.jpg', 'macbook2.jpg'], // Multiple images
-            links: [{url: '#', text: 'Buy on Amazon'}, {url: '#', text: 'Buy on eBay'}]
+            rating: 4.8, // Overall rating
+            links: [
+                { url: '#', text: 'Buy on Amazon', originalPrice: '$1999.99', salePrice: '$1899.99' },
+                { url: '#', text: 'Buy on eBay', originalPrice: '$1999.99' }
+            ]
         },
         {
             id: 4,
             name: 'Dell XPS 13',
             details: 'Compact and powerful laptop.',
-            price: '$1299',
-            pros: ['Compact design', 'Powerful specs'],
-            cons: ['Expensive', 'No HDMI port'],
+            pros: [
+                { title: 'Compact design', details: 'Slim and lightweight' },
+                { title: 'Powerful specs', details: 'Intel i7 processor and 16GB RAM' }
+            ],
+            cons: [
+                { title: 'Expensive', details: 'Starting at $1299' },
+                { title: 'No HDMI port', details: 'Requires an adapter for HDMI' }
+            ],
             images: ['xps1.jpg', 'xps2.jpg'], // Multiple images
-            links: [{url: '#', text: 'Buy on Amazon'}, {url: '#', text: 'Buy on eBay'}]
+            rating: 4.2, // Overall rating
+            links: [
+                { url: '#', text: 'Buy on Amazon', originalPrice: '$1299.99', salePrice: '$1199.99' },
+                { url: '#', text: 'Buy on eBay', originalPrice: '$1299.99' }
+            ]
         }
         // Add more products as needed
     ]
 };
+
 
 // Function to update the header
 function updateHeader(content) {
@@ -303,41 +340,103 @@ function showProductDetails(product) {
     const modal = document.getElementById('product-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalImage = document.getElementById('carousel-image');
-    const modalPrice = document.getElementById('modal-price');
     const modalProsList = document.getElementById('modal-pros-list');
     const modalConsList = document.getElementById('modal-cons-list');
-    const modalLinks = document.getElementById('modal-links');
     const modalButtons = document.getElementById('modal-buttons');
+    const modalRating = document.getElementById('modal-rating');
 
     modalTitle.textContent = product.name;
-    modalPrice.textContent = product.price;
+
+    // Clear previous content
+    modalProsList.innerHTML = '';
+    modalConsList.innerHTML = '';
+    modalButtons.innerHTML = '';
+    modalRating.innerHTML = '';
 
     // Populate pros list
-    modalProsList.innerHTML = '';
     product.pros.forEach(pro => {
         const li = document.createElement('li');
-        li.textContent = pro;
+        li.textContent = pro.title;
+
+        const details = document.createElement('div');
+        details.className = 'details';
+        details.textContent = pro.details;
+
+        li.appendChild(details);
+        li.onclick = () => {
+            toggleDetails(li, modalProsList);
+        };
+
         modalProsList.appendChild(li);
     });
 
     // Populate cons list
-    modalConsList.innerHTML = '';
     product.cons.forEach(con => {
         const li = document.createElement('li');
-        li.textContent = con;
+        li.textContent = con.title;
+
+        const details = document.createElement('div');
+        details.className = 'details';
+        details.textContent = con.details;
+
+        li.appendChild(details);
+        li.onclick = () => {
+            toggleDetails(li, modalConsList);
+        };
+
         modalConsList.appendChild(li);
     });
 
-    // Populate links as buttons
-    modalButtons.innerHTML = '';
+    // Populate buttons and prices
     product.links.forEach(link => {
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'button-container';
+
         const button = document.createElement('button');
         button.textContent = link.text;
         button.onclick = function() {
             window.open(link.url, '_blank');
         };
-        modalButtons.appendChild(button);
+
+        const priceContainer = document.createElement('div');
+        priceContainer.className = 'modal-price-container';
+
+        if (link.salePrice) {
+            const originalPrice = document.createElement('span');
+            originalPrice.className = 'original-price';
+            originalPrice.textContent = link.originalPrice;
+            priceContainer.appendChild(originalPrice);
+
+            const salePrice = document.createElement('span');
+            salePrice.className = 'sale-price';
+            salePrice.textContent = link.salePrice;
+            priceContainer.appendChild(salePrice);
+        } else {
+            const originalPrice = document.createElement('span');
+            originalPrice.className = 'modal-price';
+            originalPrice.textContent = link.originalPrice;
+            priceContainer.appendChild(originalPrice);
+        }
+
+        buttonContainer.appendChild(button);
+        buttonContainer.appendChild(priceContainer);
+        modalButtons.appendChild(buttonContainer);
     });
+
+    // Populate star rating
+    const ratingValue = Math.round(product.rating * 2) / 2; // Round to nearest 0.5
+    for (let i = 1; i <= 5; i++) {
+        const star = document.createElement('span');
+        star.className = 'star';
+        if (i <= ratingValue) {
+            star.classList.add('full-star');
+        } else if (i === Math.ceil(ratingValue) && ratingValue % 1 !== 0) {
+            star.classList.add('half-star');
+        } else {
+            star.classList.add('empty-star');
+        }
+        modalRating.appendChild(star);
+    }
 
     // Carousel functionality
     let currentImageIndex = 0;
@@ -356,6 +455,26 @@ function showProductDetails(product) {
 
     modal.style.display = 'block';
 }
+
+function toggleDetails(selectedLi, parentList) {
+    // Close any currently open details
+    const openItem = parentList.querySelector('li.active');
+    if (openItem && openItem !== selectedLi) {
+        openItem.classList.remove('active');
+        openItem.querySelector('.details').style.display = 'none';
+    }
+
+    // Toggle the selected item
+    const details = selectedLi.querySelector('.details');
+    if (details.style.display === 'none' || details.style.display === '') {
+        selectedLi.classList.add('active');
+        details.style.display = 'block';
+    } else {
+        selectedLi.classList.remove('active');
+        details.style.display = 'none';
+    }
+}
+
 
 // Function to go back in history
 function goBack() {
