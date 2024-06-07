@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Rated Products</title>
+    <link rel="stylesheet" href="../static/header.css">
+    <link rel="stylesheet" href="../static/web_body.css">
+    <link rel="stylesheet" href="categories.css">
+    <link rel="stylesheet" href="categories_modal.css">
+    <link rel="stylesheet" href="../static/footer.css">
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; font-src 'self';">
+    <!-- Secure Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+</head>
+<body>
+    <header>
+        <div class="logo">Worth The Pick</div>
+        <nav>
+            <ul>
+                <li><a href="../home.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="../about/about.html">About</a></li>
+                <li><a href="../contact_us/contact_us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+            <div class="dynamic-heading">
+                <div class="dynamic-heading-cell" id="heading-cell">Header</div>
+            </div>
+            <div class="back-cell" id="back-button">Back</div>
+            <div class="dynamic-content" id="dynamic-content">
+                <div class="dynamic-cell"></div>
+                <div class="dynamic-cell"></div>
+                <div class="dynamic-cell"></div>
+                <div class="dynamic-cell"></div>
+                <div class="dynamic-cell"></div>
+                <div class="dynamic-cell"></div>
+                <div class="dynamic-cell"></div>
+                <div class="dynamic-cell"></div>
+                <div class="dynamic-cell"></div>
+                <div class="dynamic-cell"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Top Rated Products. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal structure -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <div id="modal-body">
+                <div class="modal-header">
+                    <h2 id="modal-title">Product Name</h2>
+                </div>
+                <div class="modal-body-content">
+                    <div class="modal-left">
+                        <div class="modal-image-carousel">
+                            <button id="prev-button" class="carousel-button">&lt;</button>
+                            <img id="carousel-image" src="" alt="Product Image">
+                            <button id="next-button" class="carousel-button">&gt;</button>
+                        </div>
+                        <div class="modal-buttons" id="modal-buttons">
+                            <!-- Buttons will be populated here -->
+                        </div>
+                    </div>
+                    <div class="modal-right">
+                        <div class="modal-rating" id="modal-rating">
+                            <!-- Star rating will be populated here -->
+                        </div>
+                        <div class="modal-pros-cons">
+                            <div class="modal-pros">
+                                <h3>Pros</h3>
+                                <ul id="modal-pros-list"></ul>
+                            </div>
+                            <div class="modal-cons">
+                                <h3>Cons</h3>
+                                <ul id="modal-cons-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts.js"></script>
+</body>
+</html>

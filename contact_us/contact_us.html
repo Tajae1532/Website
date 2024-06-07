@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Us - Get in touch with Worth The Pick.">
+    <title>Contact Us - Worth The Pick</title>
+    <link rel="stylesheet" href="../static/header.css">
+    <link rel="stylesheet" href="../static/web_body.css">
+    <link rel="stylesheet" href="contact_us.css">
+    <link rel="stylesheet" href="../static/footer.css">
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data: https://via.placeholder.com; font-src 'self'; connect-src 'self' http://localhost:3000;">
+    <!-- Secure Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+</head>
+<body>
+    <header>
+        <div class="logo">Worth The Pick</div>
+        <nav aria-label="Main navigation">
+            <ul role="menubar">
+                <li role="menuitem"><a href="../home.html">Home</a></li>
+                <li role="menuitem"><a href="../categories/categories.html">Categories</a></li>
+                <li role="menuitem"><a href="../about/about.html">About</a></li>
+                <li role="menuitem"><a href="contact_us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+            <section class="contact-section">
+                <h1>Contact Us</h1>
+                <p>If you have any questions, suggestions, or feedback, please feel free to reach out to us using the form below. You can also email us directly at <a href="mailto:worththepick@gmail.com">worththepick@gmail.com</a>.</p>
+                <form id="contactForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Worth The Pick. All rights reserved.</p>
+    </footer>
+
+    <script src="../scripts.js" defer></script>
+</body>
+</html>
