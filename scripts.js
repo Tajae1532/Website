@@ -509,3 +509,5 @@ window.addEventListener('click', function(event) {
 // Initialize with categories
 renderCategories();
 });
+
+
