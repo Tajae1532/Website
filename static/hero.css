@@ -1,0 +1,115 @@
+/* hero.css */
+
+.hero {
+    background-image: url('path/to/your/hero-image.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    height: 150px; /* Adjust the height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #f0f0f0;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    border-radius: 10px;
+    z-index: 2;
+    user-select: none; /* Prevents text selection */
+}
+
+.hero-content {
+    max-width: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    height: 80%;
+    background-color: #333;
+    z-index: 3;
+    user-select: none; /* Prevents text selection */
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0 0 20px 0;
+    user-select: none; /* Prevents text selection */
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin: 0 0 20px 0;
+    user-select: none; /* Prevents text selection */
+}
+/*.cta-slot {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
+}*/
+
+.cta-slot {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px; /* Add margin to separate from other elements */
+    user-select: none; /* Prevents text selection */
+}
+
+.slot {
+    width: 100%; /* Inherit width from the button */
+    height: 80px; /* Inherit height from the button */
+    background-color: #f0f0f0;
+    position: absolute;
+    top: -25px;
+    left: 0;
+    border-radius: 5px; /* Match button border radius */
+    z-index: 0; /* Ensure it's behind the button */
+    user-select: none; /* Prevents text selection */
+}
+
+.cta-button {
+    /*background-image: url('../images/sdcardclear.png'); /* Replace with the correct path to your SD card image 
+    background-size: cover;
+    background-position: center; */
+    background-color: #333; 
+    color: #ffffff;
+    border: none;
+    width: 80px; /* Adjust the width as needed */
+    height: 85px; /* Adjust the height as needed */
+    font-size: 1.2em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Align text to the bottom */
+    justify-content: center; /* Center text horizontally */
+    position: relative;
+    z-index: 1; /* Ensure it's above the slot */
+    user-select: none; /* Prevents text selection */
+}
+
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.2); /* Enlarge and move text up slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.781);
+    user-select: none; /* Prevents text selection */
+}
+
+.cta-button.move-up {
+    animation: moveUp 1s forwards;
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        background-color: #333333e1
+    }
+    100% {
+        transform: translateY(-40px); /* Adjust this value as needed */
+        background-color: #333333c4
+    }
+}

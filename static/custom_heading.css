@@ -1,0 +1,20 @@
+.custom-heading {
+    display: block; /* Ensures the heading is a block-level element */
+    padding: 10px 20px; /* Adds padding inside the heading */
+    background-color: #333; /* Background color of the heading */
+    color: #fff; /* Text color */
+    font-size: 1.4em; /* Font size */
+    text-align: left; /* Aligns the text to the left */
+    border-radius: 10px; /* Rounds the corners */
+    max-width: 20%; /* Limits the width of the heading */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+    margin-left: -80%; /* Adds a margin to the left to ensure it's not too close to the edge */
+    user-select: none; /* Prevents text selection */
+    cursor: default; /* Keeps the cursor as default */
+}
+
+.custom-heading:hover {
+    /*  transform: scale(1.05); Slightly enlarges the heading on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhances the shadow on hover */
+}

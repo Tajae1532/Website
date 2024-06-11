@@ -799,3 +799,18 @@ window.addEventListener('click', function(event) {
 // Initialize with categories
 renderCategories();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var ctaButton = document.getElementById('cta-button');
+
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            var button = this;
+            button.classList.add('move-up');
+            setTimeout(function() {
+                window.location.href = button.href;
+            }, 1000); // Adjust the delay to match the animation duration
+        });
+    }
+});
