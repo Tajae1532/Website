@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const article1 = document.getElementById("article1");
     const article2 = document.getElementById("article2");
     const article3 = document.getElementById("article3");
+    const article4 = document.getElementById("article4")
 
     if (suggestionForm) {
         suggestionForm.addEventListener("submit", function(event) {
@@ -114,19 +115,40 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     ];
 
-    if (article1 && article2 && article3) {
+    const articles4 = [
+        {
+            title: "Smarter Siri",
+            img: "https://www.electronicproducts.com/wp-content/uploads/AMD-Zynq-RFSoC-1.png",
+            url: "https://www.msn.com/en-us/money/other/a-smarter-siri-and-more-everything-we-learned-during-apple-s-ai-announcement/ar-BB1nYkAA?ocid=BingNewsSerp"
+        },
+        {
+            title: "Bill Gates",
+            img: "https://www.electronicproducts.com/wp-content/uploads/2022/10/image-sensors.jpg",
+            url: "https://www.msn.com/en-us/money/companies/in-wyoming-bill-gates-moves-ahead-with-nuclear-project-aimed-at-revolutionizing-power-generation/ar-BB1nY1CH?ocid=BingNewsSerp"
+        },
+        {
+            title: "IOS 18",
+            img: "https://www.electronicproducts.com/wp-content/uploads/2022/10/automotive-processors.jpg",
+            url: "https://www.msn.com/en-us/news/technology/ios-18-gives-you-more-control-over-the-home-screen-lets-you-schedule-texts/ar-BB1nXYCn?ocid=BingNewsSerp"
+        }
+    ];
+
+    if (article1 && article2 && article3 && article4) {
         let index1 = 0;
         let index2 = 0;
         let index3 = 0;
+        let index4 = 0;
 
         function rotateArticles() {
             index1 = (index1 + 1) % articles1.length;
             index2 = (index2 + 1) % articles2.length;
             index3 = (index3 + 1) % articles3.length;
+            index4 = (index4 + 1) % articles4.length;
 
             updateArticle(article1, articles1[index1]);
             updateArticle(article2, articles2[index2]);
             updateArticle(article3, articles3[index3]);
+            updateArticle(article4, articles4[index4]);
         }
 
         function updateArticle(element, article) {
