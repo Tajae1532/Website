@@ -77,7 +77,7 @@
     height: 85px; /* Adjust the height as needed */
     font-size: 1.2em;
     border-top-left-radius: 5px;
-    border-top-right-radius: 15px;
+    border-top-right-radius: 25px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     cursor: pointer;
@@ -109,7 +109,7 @@
         background-color: #333333e1
     }
     100% {
-        transform: translateY(-40px); /* Adjust this value as needed */
+        transform: translateY(-45px); /* Adjust this value as needed */
         background-color: #333333c4
     }
 }
