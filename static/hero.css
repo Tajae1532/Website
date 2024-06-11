@@ -1,7 +1,7 @@
 /* hero.css */
 
 .hero {
-    margin-bottom: 50px;
+    margin: 0px 0px 10% 0px;
     /*background-image: url('path/to/your/hero-image.jpg');  Replace with your image path */
     background-size: cover;
     background-position: center;
@@ -13,7 +13,7 @@
     color: #f0f0f0;
     background-color: #f0f0f0;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  Adds a subtle shadow */
     border-radius: 10px;
     z-index: 2;
     user-select: none; /* Prevents text selection */
@@ -41,12 +41,6 @@
     margin: 0 0 20px 0;
     user-select: none; /* Prevents text selection */
 }
-/*.cta-slot {
-    position: relative;
-    width: fit-content;
-    height: fit-content;
-    display: inline-block;
-}*/
 
 .cta-slot {
     position: relative;
@@ -68,9 +62,6 @@
 }
 
 .cta-button {
-    /*background-image: url('../images/sdcardclear.png'); /* Replace with the correct path to your SD card image 
-    background-size: cover;
-    background-position: center; */
     background-color: #333; 
     color: #ffffff;
     border: none;
@@ -94,7 +85,7 @@
 }
 
 .cta-button:hover {
-    background-color:#1a1a1a;
+    background-color: #1a1a1a;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.781);
     user-select: none; /* Prevents text selection */
 }
@@ -118,3 +109,4 @@
         pointer-events: auto; /* Re-enable pointer events */
     }
 }
+

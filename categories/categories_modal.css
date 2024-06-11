@@ -8,6 +8,7 @@
     height: 100%; /* Full viewport height */
     overflow: auto; /* Scrollable if content is too large */
     background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    user-select: none; /* Prevents text selection */
 }
 
 /* Modal content box */
