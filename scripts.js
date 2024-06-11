@@ -808,9 +808,23 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             var button = this;
             button.classList.add('move-up');
+
+            // Create a temporary clone of the button to handle pointer events
+            var tempButton = button.cloneNode(true);
+            tempButton.style.position = 'absolute';
+            tempButton.style.pointerEvents = 'auto';
+            tempButton.style.opacity = '0';
+            tempButton.style.transform = 'translateY(-60px)';
+            button.parentNode.appendChild(tempButton);
+
             setTimeout(function() {
                 window.location.href = button.href;
             }, 1000); // Adjust the delay to match the animation duration
+
+            // Clean up the temporary button after navigation
+            setTimeout(function() {
+                tempButton.remove();
+            }, 1100); // Adjust to ensure it's removed after navigation
         });
     }
 });

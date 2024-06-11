@@ -100,20 +100,20 @@
 
 .cta-button.move-up {
     animation: moveUp 1s forwards;
+    pointer-events: none; /* Disable pointer events during animation */
 }
 
 @keyframes moveUp {
     0% {
         transform: translateY(0);
-        pointer-events: none; /* Ensure pointer events remain disabled */
+        pointer-events: none; /* Ensure pointer events are disabled */
     }
     50% {
         background-color: #333333e1;
-        pointer-events: none; /* Ensure pointer events remain disabled */
     }
     100% {
         transform: translateY(-60px); /* Adjust this value as needed */
         background-color: #333333c4;
-        pointer-events: none; /* Ensure pointer events remain disabled */
+        pointer-events: auto; /* Re-enable pointer events */
     }
 }
