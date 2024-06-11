@@ -24,6 +24,7 @@
     height: 40px;
     background-color: #333;
     border: 1px solid #ccc;
+    border-bottom: 0px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     display: flex;
@@ -35,7 +36,6 @@
 }
 
 .dynamic-heading-cell:hover {
-    transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -45,21 +45,6 @@
     justify-content: center;
     gap: 20px;
     margin-top: 20px;
-}
-
-.dynamic-cell {
-    width: calc(33% - 20px);
-    height: 200px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dynamic-cell:hover {
@@ -83,19 +68,12 @@ button:hover {
     background-color: #45a049;
 }
 
-.dynamic-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
 .dynamic-cell {
+    font-weight: bold;
     width: calc(33% - 20px);
     width: 200px;
     height: 150px;
-    background-color: #ffffff;
+    background-color: #9b9b9b33;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -107,20 +85,16 @@ button:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.dynamic-cell:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.779);
-}
-
 
 /* Back cell */
 
 .back-cell {
+    font-weight: bold;
     margin-left: 80px;
     margin-right: auto;
     width: 40px;
     height: 20px;
-    background-color: #ffffff;
+    background-color: #9b9b9bea;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
