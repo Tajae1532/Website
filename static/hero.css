@@ -107,10 +107,11 @@
         transform: translateY(0);
     }
     50% {
-        background-color: #333333e1
+        background-color: #333333e1;
     }
     100% {
         transform: translateY(-60px); /* Adjust this value as needed */
-        background-color: #333333c4
+        background-color: #333333c4;
+        pointer-events: none; /* Ensure pointer events remain disabled */
     }
 }
