@@ -1,7 +1,8 @@
 /* hero.css */
 
 .hero {
-    background-image: url('path/to/your/hero-image.jpg'); /* Replace with your image path */
+    margin-bottom: 50px;
+    /*background-image: url('path/to/your/hero-image.jpg');  Replace with your image path */
     background-size: cover;
     background-position: center;
     height: 150px; /* Adjust the height as needed */
