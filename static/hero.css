@@ -31,7 +31,7 @@
 
 .hero h1 {
     font-size: 3em;
-    margin: 0 0 20px 0;
+    margin: 0 0 10px 0;
     user-select: none; /* Prevents text selection */
 }
 
@@ -59,7 +59,7 @@
     height: 80px; /* Inherit height from the button */
     background-color: #f0f0f0;
     position: absolute;
-    top: -25px;
+    top: -20px;
     left: 0;
     border-radius: 5px; /* Match button border radius */
     z-index: 0; /* Ensure it's behind the button */
@@ -75,6 +75,7 @@
     border: none;
     width: 80px; /* Adjust the width as needed */
     height: 85px; /* Adjust the height as needed */
+    bottom: -20px;
     font-size: 1.2em;
     border-top-left-radius: 5px;
     border-top-right-radius: 25px;
@@ -92,7 +93,7 @@
 }
 
 .cta-button:hover {
-    transform: translateY(-5px) scale(1.2); /* Enlarge and move text up slightly on hover */
+    background-color:#1a1a1a;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.781);
     user-select: none; /* Prevents text selection */
 }
@@ -109,7 +110,7 @@
         background-color: #333333e1
     }
     100% {
-        transform: translateY(-45px); /* Adjust this value as needed */
+        transform: translateY(-60px); /* Adjust this value as needed */
         background-color: #333333c4
     }
 }
