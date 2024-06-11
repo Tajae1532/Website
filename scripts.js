@@ -170,7 +170,6 @@ document.addEventListener("DOMContentLoaded", function() {
         previousView: null // To keep track of the previous view
     };
 
-   // Example categories, articles, and products
    const categories = [
     { id: 1, name: 'Electronics' },
     { id: 2, name: 'Home Goods' },

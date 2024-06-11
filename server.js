@@ -72,6 +72,42 @@ app.post('/contact', (req, res) => {
   });
 });
 
+const productSchema = new mongoose.Schema({
+  name: String,
+  details: String,
+  price: String,
+  pros: Array,
+  cons: Array,
+  images: Array,
+  rating: Number,
+  links: Array
+});
+
+const Product = mongoose.model('Product', productSchema);
+
+// Route to handle form submissions for adding products
+app.post('/admin/add-product', async (req, res) => {
+  const { name, details, price, pros, cons, images, rating, links } = req.body;
+
+  const newProduct = new Product({
+    name,
+    details,
+    price,
+    pros,
+    cons,
+    images,
+    rating,
+    links
+  });
+
+  try {
+    await newProduct.save();
+    res.status(201).json(newProduct);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
