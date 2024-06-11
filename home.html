@@ -9,7 +9,9 @@
         <link rel="stylesheet" href="static/web_body.css">
         <link rel="stylesheet" href="home.css">
         <link rel="stylesheet" href="static/footer.css">
-        <link rel="stylesheet" href="static/heading.css"
+        <link rel="stylesheet" href="static/heading.css">
+        <link rel="stylesheet" href="static/custom_heading.css">
+        <link rel="stylesheet" href="static/hero.css">
         <!-- Content Security Policy -->
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' http://localhost:3000;">
         <!-- Secure Headers -->
@@ -33,6 +35,17 @@
 
     <main>
         <div class="content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Discover the Best Products</h1>
+                    <p>Unbiased reviews and top picks for every category.</p>
+                    <div class="cta-slot">
+                        <div class="slot"></div>
+                        <a href="categories/categories.html" class="cta-button" id="cta-button">Explore Now</a>
+                    </div>
+                </div>
+            </section>
             <h2 class="custom-heading">Latest Articles</h2>
             <section class="scrolling-banner">
                 <a href="#" class="banner-article" id="article1">
@@ -52,11 +65,7 @@
                     <h3>Random Article 4</h3>
                 </a>
             </section>
-
-            <h2 class="custom-heading">Top Categories</h2>
-            <section class="top-section">
-            </section>
-            
+            <h2 class="custom-heading">Top Categories</h2>      
             <section class="additional-categories">
                 <div class="category-card">
                     <img src="images/electronics.jpg" alt="Electronics">
