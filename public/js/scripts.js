@@ -164,45 +164,46 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function() {
  // Tracker to keep track of user's position
     // Tracker to keep track of user's position
-    let state = {
-        currentView: 'categories',
+    const state = {
+        currentView: null,
+        history: [],
+        previousView: null,
         selectedCategory: null,
         selectedArticle: null,
-        previousView: null,
         categories: [],
         articles: [],
         products: []
     };
-
-        // Fetch categories on page load
+    
+    // Fetch categories on page load
     fetch('/categories')
         .then(response => response.json())
         .then(categories => {
             state.categories = categories;
             renderCategories();
         });
-
+    
     // Function to update the header
     function updateHeader(content) {
         const headerCell = document.getElementById('heading-cell');
         headerCell.textContent = content;
     }
-
+    
     // Function to render categories
     function renderCategories() {
-        state.previousView = null;
+        state.history.push(state.currentView);
         state.currentView = 'categories';
         updateHeader('Categories');
         const dynamicContent = document.getElementById('dynamic-content');
         const cells = dynamicContent.getElementsByClassName('dynamic-cell');
-
+    
         // Clear previous content
         for (let i = 0; i < cells.length; i++) {
             cells[i].textContent = '';
-            cells[i].onclick = null;
             cells[i].style.backgroundImage = '';
+            cells[i].onclick = null;
         }
-
+    
         state.categories.forEach((category, index) => {
             if (index < cells.length) {
                 cells[index].textContent = category.name;
@@ -210,14 +211,15 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-
+    
     // Function to handle category click event
     function onCategoryClick(categoryId) {
         state.selectedCategory = categoryId;
+        state.history.push(state.currentView);
         state.currentView = 'articles';
         fetchArticles(categoryId);
     }
-
+    
     // Function to fetch articles based on selected category
     function fetchArticles(categoryId) {
         console.log('Fetching articles for categoryId:', categoryId);
@@ -230,21 +232,21 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => console.error('Error fetching articles:', error));
     }
-
+    
     // Function to render articles within a category
     function renderArticles() {
         console.log('Rendering Articles:', state.articles);
         updateHeader('Articles');
         const dynamicContent = document.getElementById('dynamic-content');
         const cells = dynamicContent.getElementsByClassName('dynamic-cell');
-
+    
         // Clear previous content
         for (let i = 0; i < cells.length; i++) {
             cells[i].textContent = '';
-            cells[i].onclick = null;
             cells[i].style.backgroundImage = '';
+            cells[i].onclick = null;
         }
-
+    
         state.articles.forEach((article, index) => {
             if (index < cells.length) {
                 cells[index].textContent = article.title;
@@ -252,14 +254,15 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-
+    
     // Function to handle article click event
     function onArticleClick(articleId) {
         state.selectedArticle = articleId;
+        state.history.push(state.currentView);
         state.currentView = 'products';
         fetchProducts(articleId);
     }
-
+    
     // Function to fetch products based on selected article
     function fetchProducts(articleId) {
         console.log('Fetching products for articleId:', articleId);
@@ -272,33 +275,33 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => console.error('Error fetching products:', error));
     }
-
+    
     // Function to render products within an article
     function renderProducts() {
         console.log('Rendering Products:', state.products);
         updateHeader('Products');
         const dynamicContent = document.getElementById('dynamic-content');
         const cells = dynamicContent.getElementsByClassName('dynamic-cell');
-
+    
         // Clear previous content
         for (let i = 0; i < cells.length; i++) {
             cells[i].textContent = '';
             cells[i].innerHTML = '';
-            cells[i].onclick = null;
             cells[i].style.backgroundImage = '';
+            cells[i].onclick = null;
         }
-
+    
         state.products.forEach((product, index) => {
             if (index < cells.length) {
                 const productImg = document.createElement('img');
                 productImg.src = product.images[0];
                 productImg.alt = product.name;
                 productImg.className = 'product-image';
-
+    
                 const productName = document.createElement('div');
                 productName.className = 'product-name';
                 productName.textContent = product.name;
-
+    
                 cells[index].appendChild(productImg);
                 cells[index].appendChild(productName);
                 cells[index].style.cursor = 'pointer';
@@ -436,7 +439,7 @@ document.addEventListener("DOMContentLoaded", function() {
             openItem.classList.remove('active');
             openItem.querySelector('.details').style.display = 'none';
         }
-
+    
         // Toggle the selected item
         const details = selectedLi.querySelector('.details');
         if (details.style.display === 'none' || details.style.display === '') {
@@ -462,17 +465,20 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
-// // Function to go back in history
-// function goBack() {
-//     console.log('goBack called');
-//     console.log('state.previousView:', state.previousView);
-//     console.log('state.currentView:', state.currentView);
-//     if (state.currentView === 'article') {
-//         loadCategory(state.selectedCategory);
-//     } else if (state.currentView === 'articles') {
-//         renderCategories();
-//     }
-// }
+    function goBack() {
+        if (state.history.length > 0) {
+            const previousView = state.history.pop();
+            state.currentView = previousView;
+    
+            if (previousView === 'categories') {
+                renderCategories();
+            } else if (previousView === 'articles') {
+                renderArticles();
+            } else if (previousView === 'products') {
+                renderProducts();
+            }
+        }
+    }
 
 // Attach event listener for the back button
 const backButton = document.getElementById('back-button');
