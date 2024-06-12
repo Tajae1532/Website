@@ -70,7 +70,6 @@ button:hover {
 
 .dynamic-cell {
     font-weight: bold;
-    width: calc(33% - 20px);
     width: 200px;
     height: 150px;
     background-color: #9b9b9b33;
@@ -83,8 +82,37 @@ button:hover {
     text-align: center;
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-size: cover; /* Ensure background image covers the cell */
+    background-position: center; /* Center the background image */
+    position: relative; /* Position relative for overlay text */
+    color: #000000; /* Ensure text is visible on images */
+    cursor: pointer; /* Ensure cursor is pointer */
+    overflow: hidden; /* Hide overflow for contained elements */
 }
 
+.product-image {
+    position:relative;
+    max-width: 100%; /* Ensure the image fits within the cell */
+    max-height: 80%; /* Ensure the image fits within the cell */
+    object-fit: contain; /* Ensure the image is contained within the cell */
+    bottom: 15%;
+}
+
+.product-name {
+    color:#000000;
+    position: absolute;
+    bottom: 5px;
+    background-color: rgba(0, 0, 0, 0.185); /* Semi-transparent background for text */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1em; /* Adjust font size if needed */
+    width: calc(80%); /* Adjust width to fit within the cell */
+}
+
+.dynamic-cell:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
 /* Back cell */
 
