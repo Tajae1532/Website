@@ -47,7 +47,7 @@
 }
 
 .scrolling-banner {
-    background-color: #fff;
+    background-color: transparent;
     padding: 10px;
     margin: 20px 0;
     width: 1100px;
@@ -65,7 +65,7 @@
     text-align: center;
     text-decoration: none;
     color: inherit;
-    background-color: #ebebeb97;
+    background-color: #E8E8ED;
     padding: 10px;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
