@@ -11,7 +11,7 @@
     justify-content: center;
     text-align: center;
     color: #f0f0f0;
-    background-color: #f0f0f0;
+    background-color: transparent;
     padding: 20px;
     /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  Adds a subtle shadow */
     border-radius: 10px;
@@ -52,7 +52,7 @@
 .slot {
     width: 100%; /* Inherit width from the button */
     height: 80px; /* Inherit height from the button */
-    background-color: #f0f0f0;
+    background-color: #fafafc;
     position: absolute;
     top: -20px;
     left: 0;
