@@ -312,7 +312,7 @@ const products = {
         {
             id: 1,
             name: 'iPhone 15',
-            details: 'Latest iPhone with A16 Bionic chip.',
+            details: 'The Apple iPhone 15 (128GB, Black) features a 6.1-inch Super Retina XDR display with a resolution of 2556 x 1179 pixels. It is powered by the A16 Bionic chip and supports 5G connectivity. The phone is equipped with a dual-camera system, including a 48MP main camera and a 12MP ultra-wide camera, and features like Night mode and 4K video recording. It offers splash, water, and dust resistance (IP68) and includes a USB-C port for charging. The iPhone 15 operates on iOS 17 and supports eSIM technology​',
             pros: [
                 { title: 'Great camera', details: '12MP dual-lens camera with Night mode' },
                 { title: 'Fast performance', details: 'A16 Bionic chip for faster processing' }
