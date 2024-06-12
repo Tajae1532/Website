@@ -8,6 +8,7 @@
     height: 100%; /* Full viewport height */
     overflow: auto; /* Scrollable if content is too large */
     background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    user-select: none; /* Prevents text selection */
 }
 
 /* Modal content box */
@@ -268,3 +269,17 @@
 .modal-rating .empty-star::before {
     content: '☆'; /* Empty star */
 }
+
+/* Overall description styling */
+.modal-description {
+    font-size: 1em;
+    color: #333;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Space above the description */
+    width: 85%; /* Full width relative to parent */
+    order: 2; /* Ensure it appears after the modal-right */
+}
+

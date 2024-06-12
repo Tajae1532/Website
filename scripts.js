@@ -311,7 +311,7 @@ const products = {
         {
             id: 1,
             name: 'iPhone 15',
-            details: 'Latest iPhone with A16 Bionic chip.',
+            details: 'The Apple iPhone 15 (128GB, Black) features a 6.1-inch Super Retina XDR display with a resolution of 2556 x 1179 pixels. It is powered by the A16 Bionic chip and supports 5G connectivity. The phone is equipped with a dual-camera system, including a 48MP main camera and a 12MP ultra-wide camera, and features like Night mode and 4K video recording. It offers splash, water, and dust resistance (IP68) and includes a USB-C port for charging. The iPhone 15 operates on iOS 17 and supports eSIM technology​',
             pros: [
                 { title: 'Great camera', details: '12MP dual-lens camera with Night mode' },
                 { title: 'Fast performance', details: 'A16 Bionic chip for faster processing' }
@@ -543,7 +543,6 @@ const products = {
     ]
 };
 
-
 // Function to update the header
 function updateHeader(content) {
     const headerCell = document.getElementById('heading-cell');
@@ -557,10 +556,11 @@ function renderCategories() {
     updateHeader('Categories'); // Update header
     const dynamicContent = document.getElementById('dynamic-content');
     const cells = dynamicContent.getElementsByClassName('dynamic-cell');
-    
+
     // Clear previous content
     for (let i = 0; i < cells.length; i++) {
         cells[i].textContent = '';
+        cells[i].style.backgroundImage = ''; // Clear background image
         cells[i].onclick = null;
     }
 
@@ -581,10 +581,11 @@ function loadCategory(categoryId) {
     updateHeader(categoryName); // Update header
     const dynamicContent = document.getElementById('dynamic-content');
     const cells = dynamicContent.getElementsByClassName('dynamic-cell');
-    
+
     // Clear previous content
     for (let i = 0; i < cells.length; i++) {
         cells[i].textContent = '';
+        cells[i].style.backgroundImage = ''; // Clear background image
         cells[i].onclick = null;
     }
 
@@ -597,7 +598,6 @@ function loadCategory(categoryId) {
     });
 }
 
-// Function to render article details with products
 function loadArticle(articleId) {
     state.previousView = 'articles'; // Track previous view
     state.currentView = 'article';
@@ -608,33 +608,47 @@ function loadArticle(articleId) {
     updateHeader(articleTitle); // Update header
     const dynamicContent = document.getElementById('dynamic-content');
     const cells = dynamicContent.getElementsByClassName('dynamic-cell');
-    
+
     // Clear previous content
     for (let i = 0; i < cells.length; i++) {
-        cells[i].textContent = '';
+        cells[i].innerHTML = ''; // Clear inner HTML
         cells[i].onclick = null;
     }
 
     const articleProducts = products[articleId] || [];
     articleProducts.forEach((product, index) => {
         if (index < cells.length) {
-            cells[index].textContent = product.name;
+            const productImg = document.createElement('img');
+            productImg.src = product.images[0]; // Set the image source
+            productImg.alt = product.name; // Set the alt text
+            productImg.className = 'product-image'; // Add a class for styling
+
+            const productName = document.createElement('div');
+            productName.className = 'product-name';
+            productName.textContent = product.name;
+
+            cells[index].appendChild(productImg); // Append the image
+            cells[index].appendChild(productName); // Append the product name
+            cells[index].style.cursor = 'pointer'; // Ensure cursor is pointer
             cells[index].onclick = () => showProductDetails(product);
         }
     });
 }
 
 // Function to show product details in a modal
+// Function to show product details in a modal
 function showProductDetails(product) {
     const modal = document.getElementById('product-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalImage = document.getElementById('carousel-image');
+    const modalDescription = document.getElementById('modal-description');
     const modalProsList = document.getElementById('modal-pros-list');
     const modalConsList = document.getElementById('modal-cons-list');
     const modalButtons = document.getElementById('modal-buttons');
     const modalRating = document.getElementById('modal-rating');
 
     modalTitle.textContent = product.name;
+    modalDescription.textContent = product.details; // Set the overall description
 
     // Clear previous content
     modalProsList.innerHTML = '';
@@ -745,6 +759,7 @@ function showProductDetails(product) {
     modal.style.display = 'block';
 }
 
+
 function toggleDetails(selectedLi, parentList) {
     // Close any currently open details
     const openItem = parentList.querySelector('li.active');
@@ -763,7 +778,6 @@ function toggleDetails(selectedLi, parentList) {
         details.style.display = 'none';
     }
 }
-
 
 // Function to go back in history
 function goBack() {
