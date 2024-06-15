@@ -1,14 +1,14 @@
 .top-section, .additional-categories {
     display: flex;
     justify-content: center;
-    gap: 40px; /* Adjust the gap to increase spacing */
+    gap: 5px; /* Adjust the gap to increase spacing */
     margin-bottom: 40px;
     flex-wrap: wrap;
     user-select: none; /* Prevents text selection */
 }
 
 .category-card {
-    width: 250px; /* Fixed width */
+    width: 100px; /* Fixed width */
     height: 100px; /* Fixed height */
     top: 10%;
     padding: 20px;
