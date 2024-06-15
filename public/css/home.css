@@ -32,13 +32,17 @@
 }
 
 .category-card h2 {
-    font-size: 1.5em;
+    top: 60px;
+    height: 15px;
+    width: 100%;
+    right: 10px;
+    font-size: 1.2em;
     color: #fff;
     position: relative;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.352);
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px;
 }
 
 .category-card:hover {
