@@ -19,6 +19,7 @@
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     position: relative;
     overflow: hidden;
+    background-color: #E8E8ED;
 }
 
 .category-card img {
@@ -26,23 +27,27 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+    height: 80%;
+    object-fit: contain;
+    z-index: 1;
 }
 
 .category-card h2 {
-    top: 60px;
-    height: 15px;
-    width: 100%;
-    right: 10px;
-    font-size: 1.2em;
+    top: 75px;
+    height: 25px; /* Adjust height to auto to fit content */
+    width: 120px;
+    right: 20px;
+    background-color: #E8E8ED;
     color: #fff;
     position: relative;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.352);
     padding: 10px;
     border-radius: 0px 0px 10px 10px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1em; /* Starting font size */
 }
 
 .category-card:hover {

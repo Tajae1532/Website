@@ -563,5 +563,23 @@ function renderTopSmartphones(smartphones) {
 
         topItemsSection.appendChild(categoryCard);
     });
+
+    adjustFontSize();
 }
 
+function adjustFontSize() {
+    const cards = document.querySelectorAll('.category-card h2');
+
+    cards.forEach(card => {
+        let fontSize = 1; // Starting font size in em
+        const maxWidth = card.parentElement.clientWidth ; // Adjust based on padding/margins
+        const maxHeight = card.parentElement.clientHeight ; // Adjust based on padding/margins
+
+        card.style.fontSize = `${fontSize}em`;
+
+        while (card.scrollWidth > maxWidth || card.scrollHeight > maxHeight) {
+            fontSize -= 0.1;
+            card.style.fontSize = `${fontSize}em`;
+        }
+    });
+}
