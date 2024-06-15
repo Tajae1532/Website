@@ -137,6 +137,17 @@ app.get('/products/:articleId', async (req, res) => {
   }
 });
 
+// Route to get top 10 smartphones
+app.get('/top-smartphones', async (req, res) => {
+  try {
+      const topSmartphones = await Product.find({ articleId: 101 }).limit(10); 
+      res.json(topSmartphones);
+  } catch (err) {
+      res.status(500).json({ message: err.message });
+  }
+});
+
+
 // Serve the home.html file
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'home.html'));

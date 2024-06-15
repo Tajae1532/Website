@@ -530,3 +530,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchTopSmartphones();
+});
+
+function fetchTopSmartphones() {
+    fetch('/top-smartphones')
+        .then(response => response.json())
+        .then(smartphones => {
+            renderTopSmartphones(smartphones);
+        })
+        .catch(error => console.error('Error fetching top smartphones:', error));
+}
+
+function renderTopSmartphones(smartphones) {
+    const topItemsSection = document.getElementById('top-items-section');
+
+    smartphones.forEach(smartphone => {
+        const categoryCard = document.createElement('div');
+        categoryCard.className = 'category-card';
+
+        const productImg = document.createElement('img');
+        productImg.src = smartphone.images[0];
+        productImg.alt = smartphone.name;
+
+        const productName = document.createElement('h2');
+        productName.textContent = smartphone.name;
+
+        categoryCard.appendChild(productImg);
+        categoryCard.appendChild(productName);
+
+        topItemsSection.appendChild(categoryCard);
+    });
+}
+
