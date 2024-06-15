@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchTopSmartphones();
-});
+}); // debug
 
 function fetchTopSmartphones() {
     fetch('/top-smartphones')
