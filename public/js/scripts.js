@@ -583,3 +583,64 @@ function adjustFontSize() {
         }
     });
 }
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var ctaButton = document.getElementById('cta-button');
+
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            var button = this;
+            button.classList.add('move-up');
+
+            // Create a temporary clone of the button to handle pointer events
+            var tempButton = button.cloneNode(true);
+            tempButton.style.position = 'absolute';
+            tempButton.style.pointerEvents = 'auto';
+            tempButton.style.opacity = '0';
+            tempButton.style.transform = 'translateY(-60px)';
+            button.parentNode.appendChild(tempButton);
+
+            setTimeout(function() {
+                window.location.href = button.href;
+            }, 1000); // Adjust the delay to match the animation duration
+
+            // Clean up the temporary button after navigation
+            setTimeout(function() {
+                tempButton.remove();
+            }, 1100); // Adjust to ensure it's removed after navigation
+        });
+    }
+
+    // Search bar functionality
+    var searchButton = document.getElementById('search-button');
+    var searchInput = document.getElementById('search-input');
+
+    function handleSearch() {
+        var query = searchInput.value.trim();
+        if (query !== '') {
+            console.log('Searching for:', query);
+            // Redirect to a search results page (example)
+            window.location.href = 'search_results.html?query=' + encodeURIComponent(query);
+        } else {
+            alert('Please enter a search term.');
+        }
+    }
+
+    if (searchButton && searchInput) {
+        searchButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            handleSearch();
+        });
+
+        searchInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                handleSearch();
+            }
+        });
+    }
+});
+

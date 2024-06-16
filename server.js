@@ -147,6 +147,21 @@ app.get('/top-smartphones', async (req, res) => {
   }
 });
 
+// Route to handle search queries
+app.get('/search', async (req, res) => {
+  try {
+    const query = req.query.q;
+    const product = await Product.findOne({ name: new RegExp(query, 'i') }); // Case-insensitive search
+    if (product) {
+      res.json(product);
+    } else {
+      res.status(404).json({ message: 'Product not found' });
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 
 // Serve the home.html file
 app.get('/', (req, res) => {
